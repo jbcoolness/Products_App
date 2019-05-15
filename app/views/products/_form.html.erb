@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-sm-7">
+      <h1> <%= @product.new_record? ? "New" : "Edit" %> Product </h1>
+      <hr class="p-3">
+
+      <%= form_for @product do |f| %>
+            <div class="form-group">
+              <%= f.text_field :name, class: 'form-control form-control-lg', placeholder: "Nombre del producto" %>
+            </div>
+            <div class="form-group pb-0 mb-0">
+              <%= f.text_field :price, class: 'form-control form-control-lg', placeholder: "Valor del produto" %>
+            </div>
+            <div class="form-group">
+              <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+                <br>
+                <%= b.check_box %>
+                <%= b.label %>
+              <% end %>
+            </div>
+            <div class="action">
+              <%= f.submit @product.new_record? ? "Create Product" : "Edit Product", class: "btn btn-primary btn-lg btn-block" %>
+            </div>
+      <% end %>
+    </div>
+  </div>
+</div>
