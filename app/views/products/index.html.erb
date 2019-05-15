@@ -15,7 +15,7 @@
             <tr>
               <td> <%= product.name %> </td>
               <td> <%= product.price %> </td>
-              <td> <%= product.categories %> </td>
+              <td> <%= product.categories.map(&:name).join(',') %> </td>
             </tr>
             <% end %>
           </tbody>
